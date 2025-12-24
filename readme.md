@@ -65,20 +65,6 @@ Cognify is an advanced AI-powered chatbot that leverages **Retrieval-Augmented G
 
 ---
 
-# 🔮 Future Roadmap
-
-* 📄 **UI Enhancements**: Show uploaded PDFs in sidebar cards with delete option
-* 🗨️ **Contextual Chat**: Pass previous conversations to LLM for follow-ups
-* 🔐 **Authentication**: Multi-user accounts with private data & chats
-* 💾 **Persistence**: Store chats within user accounts
-* 🧵 **Threaded Sessions**: Independent document sets per chat thread
-* 🖼️ **Image Support**: Extract text from images in PDFs
-* 📑 **Multi-format Support**: `.docx`, `.xlsx`, `.pptx`, etc.
-* 🧠 **Semantic Chunking**: Domain-specific chunking for legal/scientific docs
-
-
----
-
 ## ⚡ How It Works
 
 1. User uploads a PDF document.
