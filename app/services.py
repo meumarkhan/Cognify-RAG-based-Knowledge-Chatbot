@@ -96,6 +96,16 @@ def get_chat_history():
     return history
 
 
+def link_request_to_response(request_id: int, response_id: int):
+    """Map a user's query request_id to the assistant chat_id that answers it."""
+    redis_client.set(f"request:{request_id}:response_id", response_id)
+
+
+def get_linked_response_id(request_id: int):
+    value = redis_client.get(f"request:{request_id}:response_id")
+    return int(value) if value is not None else None
+
+
 def get_response_by_id(request_id: int):
     key = f"chat:{request_id}"
     if redis_client.exists(key):

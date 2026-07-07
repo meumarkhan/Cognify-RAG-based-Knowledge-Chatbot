@@ -87,13 +87,15 @@ async def make_query(request: QueryRequest, background_tasks: BackgroundTasks):
                 )
 
             # Step 4: Save successful response
-            services.save_to_redis(response, "assistant")
+            assistant_id = services.save_to_redis(response, "assistant")
+            services.link_request_to_response(request_id, assistant_id)
             return {"answer": response}
 
         except Exception as e:
             # Save generic error state in Redis too
             error_msg = "❌ An error occurred while processing your query."
-            services.save_to_redis(error_msg, "assistant")
+            assistant_id = services.save_to_redis(error_msg, "assistant")
+            services.link_request_to_response(request_id, assistant_id)
 
             raise HTTPException(
                 status_code=500,
@@ -107,7 +109,10 @@ async def make_query(request: QueryRequest, background_tasks: BackgroundTasks):
 
 @app.get("/api/v1/query-result/{request_id}")
 async def get_query_result(request_id: int):
-    response= services.get_response_by_id(request_id+1)
+    assistant_id = services.get_linked_response_id(request_id)
+    if assistant_id is None:
+        return {"status": "processing", "answer": None}
+    response = services.get_response_by_id(assistant_id)
     if response is None:
         return {"status": "processing", "answer": None}
     return {"status": "done", "answer": response}
