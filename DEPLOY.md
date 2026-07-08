@@ -34,7 +34,7 @@ newgrp docker
 git clone https://github.com/meumarkhan/Cognify-RAG-based-Knowledge-Chatbot.git
 cd Cognify-RAG-based-Knowledge-Chatbot
 cp .env.example .env
-nano .env   # fill in OPENROUTER_API_KEY, REDIS_PASSWORD, ALLOWED_ORIGINS=https://YOUR_DOMAIN
+nano .env   # fill in GROQ_API_KEY, REDIS_PASSWORD, ALLOWED_ORIGINS=https://YOUR_DOMAIN
 ```
 
 ## 5. Start the app

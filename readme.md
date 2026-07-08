@@ -36,7 +36,7 @@ Cognify is an advanced AI-powered chatbot that leverages **Retrieval-Augmented G
 | Temporary Storage          | **Redis**                                   | Stores previous conversations for context-aware chat |
 | Vector Database            | **ChromaDB**                                | Stores and retrieves embeddings efficiently          |
 | Embedding Model            | **sentence\_transformers/all-MiniLM-L6-v2** | Converts text chunks into embeddings                 |
-| Large Language Model (LLM) | **deepseek/deepseek-chat-v3-0324\:free**    | Generates contextual and informative responses       |
+| Large Language Model (LLM) | **Groq (llama-3.3-70b-versatile)**          | Generates contextual and informative responses       |
 
 ---
 
