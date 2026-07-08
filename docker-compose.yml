@@ -35,8 +35,6 @@ services:
   embedding-service:
     build: ./embedding-service
     container_name: embedding-service
-    ports:
-      - "127.0.0.1:8005:8000"
     depends_on:
       - redis
     restart: unless-stopped
@@ -45,8 +43,6 @@ services:
     image: redis:7-alpine
     container_name: redis-server
     command: ["redis-server", "--requirepass", "${REDIS_PASSWORD}", "--appendonly", "yes"]
-    ports:
-      - "127.0.0.1:6379:6379"
     volumes:
       - redis-data:/data
     restart: unless-stopped
@@ -54,8 +50,6 @@ services:
   chromadb:
     image: ghcr.io/chroma-core/chroma:latest
     container_name: chromadb
-    ports:
-      - "127.0.0.1:8003:8000"   # expose Chroma REST API on localhost only
     environment:
       - IS_PERSISTENT=TRUE          # enables persistence on disk
       - ALLOW_RESET=${CHROMA_ALLOW_RESET:-FALSE}   # set to TRUE only for local dev
