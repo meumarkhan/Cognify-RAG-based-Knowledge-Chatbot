@@ -63,13 +63,12 @@ for role, msg in st.session_state.chat_history:
 
 # --- Chat input at bottom ---
 st.divider()
-col1, col2 = st.columns([5, 1])
-
-with col1:
-    user_query = st.text_input("Type your message...", key="user_input", label_visibility="collapsed")
-
-with col2:
-    send_clicked = st.button("Send", use_container_width=True)
+with st.form("chat_form", clear_on_submit=True):
+    col1, col2 = st.columns([5, 1])
+    with col1:
+        user_query = st.text_input("Type your message...", key="user_input", label_visibility="collapsed")
+    with col2:
+        send_clicked = st.form_submit_button("Send", use_container_width=True)
 
 # --- Handle send ---
 if send_clicked and user_query:
